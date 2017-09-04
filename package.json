@@ -1,0 +1,26 @@
+{
+  "name": "triple-axis",
+  "version": "1.0.0",
+  "main": "index.html",
+  "window": {
+    "frame": false,
+    "transparent": true,
+    "min_width": 1366,
+    "min_height": 728
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "browser-sync": "^2.18.8",
+    "serialport": "^4.0.7"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-rename": "latest",
+    "gulp-csso": "latest",
+    "gulp-sass": "latest",
+    "gulp-csscomb": "latest",
+    "gulp-cssbeautify": "latest",
+    "gulp-autoprefixer": "latest"
+  }
+}

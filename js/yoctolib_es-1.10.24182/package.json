@@ -1,0 +1,77 @@
+{
+  "name": "yoctolib-es",
+  "author": "Yoctopuce",
+  "description": "Yoctopuce library for EcmaScript (fully asynchronous)",
+  "version": "1.10.24182",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoctopuce/yoctolib_es.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yoctopuce/yoctolib_es/issues"
+  },
+  "keywords": [
+    "Yoctopuce",
+    "EcmaScript",
+    "async"
+  ],
+  "directories": {
+    "bin": "bin",
+    "doc": "doc",
+    "lib": "lib",
+    "example": "example_nodejs"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "set-version": "node bin/build.js set-version",
+    "make-index": "node bin/build.js make-index",
+    "babel": "node bin/build.js babel",
+    "build": "node bin/build.js build"
+  },
+  "dependencies": {
+    "ws": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-plugin-transform-async-to-generator": "^6.4.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.4.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
+    "babel-plugin-transform-es2015-parameters": "^6.4.2",
+    "semver": "^5.1.0"
+  },
+  "jspm": {
+    "registry": "npm",
+    "format": "cjs",
+    "main": "index.js",
+    "meta": {
+      "src.js": {
+        "format": "esm"
+      },
+      "src/*": {
+        "format": "esm"
+      }
+    },
+    "directories": {
+      "dist": "lib"
+    },
+    "map": {
+      "yoctolib-es": "."
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "plugin-babel": "systemjs-plugin-babel@^0.0.9"
+    },
+    "peerDependencies": {
+      "babel-runtime": "^5.8.35",
+      "core-js": "^1.1.4"
+    },
+    "overrides": {
+      "npm:babel-runtime@5.8.34": {
+        "main": false,
+        "dependencies": {}
+      }
+    }
+  }
+}

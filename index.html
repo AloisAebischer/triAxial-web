@@ -1,0 +1,40 @@
+<html ng-app="triple-axis">
+<head>
+    <meta charset="utf-8">
+    <title>Triple-axis NW</title>
+    <meta name="viewport" content="initial-scale=2, maximum-scale=2, user-scalable=no, width=device-width">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/yocto_api.js"></script>
+    <script type="text/javascript" src="js/yocto_pwminput.js"></script>
+    <script type="text/javascript" src="js/yocto_tilt.js"></script>
+    <script type="text/javascript" src="js/yocto_compass.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/chart.js"></script>
+
+    <script>
+        if (typeof require != 'undefined') {
+            var SerialPort = require('serialport');
+        }
+    </script>
+
+</head>
+ 
+<body ng-controller="mainController as vm" style="background-color:black;">
+
+<!-- User interface -->
+<div style="display:block;overflow:hidden">
+    <interface data="interfaceData" style="overflow:hidden"></interface>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="js/main.js"></script>
+<script src="js/directives/graph/graph.controller.js"></script>
+<script src="js/directives/graph/graph.js"></script>
+<script src="js/directives/panel/panel.controller.js"></script>
+<script src="js/directives/panel/panel.js"></script>
+<script src="js/directives/interface/interface.controller.js"></script>
+<script src="js/directives/interface/interface.js"></script>
+
+</body>
+</html>

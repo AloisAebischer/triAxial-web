@@ -1,0 +1,2 @@
+- Fix message "There is a new version of VirtualHub available" that is always displayed in Web interface.
+- Fix incomplete error message that do not display the name of the process that lock the USB port

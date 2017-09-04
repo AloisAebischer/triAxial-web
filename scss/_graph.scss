@@ -1,0 +1,10 @@
+@import "mixins";
+// Cadran map data
+.graph {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 64%;
+    background-size: 100% 100%;
+}

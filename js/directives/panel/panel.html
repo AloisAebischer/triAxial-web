@@ -1,0 +1,143 @@
+<!-- PANEL -->
+<div class="panel">
+        <form style="position:absolute; height: 100%; width: 100%; bottom:0; left:0;">
+            <br>
+            <fieldset>
+                <legend>Commands</legend>
+                <div class="commands">
+                    <table>
+                        <col width="33%"/>
+                        <col width="33%"/>
+                        <col width="33%"/>
+                        <tr>
+                            <td></td>
+                            <td>Frequency: <input type="number" value="3.00" id="calib-freq" style="width: 30%"> Hz</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="btn" id="calibrate1" ng-click="calibrate1()" ng-class="{yellow:calibrating1, green:calibrateOk1, red:calibrateError1}">Calibrate 1</div>
+                            </td>
+                            <td>
+                                <div class="btn" id="calibrate2" ng-click="calibrate2()" ng-class="{yellow:calibrating2, green:calibrateOk2, red:calibrateError2}">Calibrate 2</div>
+                            </td>
+                            <td>
+                                <div class="btn" id="calibrate3" ng-click="calibrate3()" ng-class="{yellow:calibrating3, green:calibrateOk3, red:calibrateError3}">Calibrate 3</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <div class="btn" ng-click="measuring=!measuring" ng-class="{red:measuring}">Measure</div>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Graphical Settings</legend>
+                <div class="graphics">
+                    <table>
+                        <col width="33%"/>
+                        <col width="33%"/>
+                        <col width="33%"/>
+                        <tr>
+                            <td>
+                                <div class="btn" ng-click="displayAmpli1=!displayAmpli1" ng-class="{red:displayAmpli1}">Amplitude 1</div>
+                            </td>
+                            <td>
+                                <div class="btn" ng-click="displayAmpli2=!displayAmpli2" ng-class="{green:displayAmpli2}">Amplitude 2</div>
+                            </td>
+                            <td>
+                                <div class="btn" ng-click="displayAmpli3=!displayAmpli3" ng-class="{blue:displayAmpli3}">Amplitude 3</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="btn" ng-click="displayFreq1=!displayFreq1" ng-class="{red:displayFreq1}">Frequency 1</div>
+                            </td>
+                            <td>
+                                <div class="btn" ng-click="displayFreq2=!displayFreq2" ng-class="{green:displayFreq2}">Frequency 2</div>
+                            </td>
+                            <td>
+                                <div class="btn" ng-click="displayFreq3=!displayFreq3" ng-class="{blue:displayFreq3}">Frequency 3</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Time scale:</td>
+                            <td>Freq scale:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" value="{{timeScale}}" id="time-scale" style="width:30%;"> s</td>
+                            <td><input type="number" value="{{freqScale}}" id="freq-scale" style="width:30%;"> uHz/div</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            <br><br>
+            <fieldset>
+                <legend>Statistical Results</legend>
+                <div class="results">
+                    <table>
+                        <col width="10%"/>
+                        <tr>
+                            <th>Signal</th>
+                            <th>Frequency [Hz]</th>
+                            <th>Mean Freq. [Hz]</th>
+                            <th>Min. Freq. [Hz]</th>
+                            <th>Max. Freq. [Hz]</th>
+                            <th>Std. dev. [uHz]</th>
+                            <th>Drift [s/d]</th>
+                        </tr>
+                        <tr style="background-color: red">
+                            <td>1</td>
+                            <td id="freq1"></td>
+                            <td id="mean-freq1"></td>
+                            <td id="min-freq1"></td>
+                            <td id="max-freq1"></td>
+                            <td id="std-dev1"></td>
+                            <td id="lead1"></td>
+                        </tr>
+                        <tr style="background-color: green ">
+                            <td>2</td>
+                            <td id="freq2"></td>
+                            <td id="mean-freq2"></td>
+                            <td id="min-freq2"></td>
+                            <td id="max-freq2"></td>
+                            <td id="std-dev2"></td>
+                            <td id="lead2"></td>
+                        </tr>
+                        <tr style="background-color: DodgerBlue ">
+                            <td>3</td>
+                            <td id="freq3"></td>
+                            <td id="mean-freq3"></td>
+                            <td id="min-freq3"></td>
+                            <td id="max-freq3"></td>
+                            <td id="std-dev3"></td>
+                            <td id="lead3"></td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Movement Orientation</legend>
+                <br><br><br>
+                <div class="container">
+                    <div id="cube">
+                        <figure class="one"> <div class="wheel red"></div> </figure>
+                        <figure class="two"> <div class="wheel green"> </figure>
+                        <figure class="three"> <div class="wheel blue"> </figure>
+                        <figure class="four"></figure>
+                        <figure class="five"></figure>
+                        <figure class="six"></figure>
+                    </div>
+                </div>
+                <br><br><br>
+            </fieldset>
+        </form>
+</div>
