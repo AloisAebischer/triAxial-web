@@ -29,80 +29,112 @@
         var leadObj3 = document.getElementById("lead3");
         var timeScaleObj = document.getElementById("time-scale");
         var freqScaleObj = document.getElementById("freq-scale");
+        var fileNameObj = document.getElementById("file-name");
 
+        //Enter key event to save the data
+        fileNameObj.addEventListener("keyup", function(event){
+            if(event.keyCode==13){
+                var dataToSave=[];
+                for(var i=0; i<$scope.ampliData1.length; i++){
+                    dataToSave.push($scope.ampliData1[i][1]);
+                    dataToSave.push($scope.frequencyData1[i][1].toFixed(6));
+                    dataToSave.push($scope.ampliData2[i][1]);
+                    dataToSave.push($scope.frequencyData2[i][1].toFixed(6));
+                    dataToSave.push($scope.ampliData3[i][1]);
+                    dataToSave.push($scope.frequencyData3[i][1].toFixed(6));
+                }
+                fs.writeFile("./dataBase/test3.txt", dataToSave,"utf8", function(err) {
+                    if(err) {
+                        return console.log(err);
+                    }
+                }); 
+            }
+        });
+        //Enter key event to validate the calib frequency
         calibFreqObj.addEventListener("keyup", function(event){
             if(event.keyCode==13){
                 $scope.calibFreq = calibFreqObj.value;
                 $scope.$apply();
             }
         });
-
+        //Enter key event to validate the time scale
         timeScaleObj.addEventListener("keyup", function(event){
             if(event.keyCode==13){
                 $scope.timeScale = timeScaleObj.value;
                 $scope.$apply();
             }
         });
+        //Enter key event to validate the frequency scale
         freqScaleObj.addEventListener("keyup", function(event){
             if(event.keyCode==13){
                 $scope.freqScale = freqScaleObj.value;
                 $scope.$apply();
             }
         });
-        $scope.calibrate1 = function(){
-            if($scope.calibrateOk1 || $scope.calibrateError1) {
-                $scope.calibrating1 = false;
-                $scope.calibrateOk1 = false;
-                $scope.calibrateError1 = false;
-                calibObj1.innerHTML = "Calibrate 1";
-            }
-            else{
-                $scope.calibrating1 = true;
-                calibObj1.innerHTML = "Calibrating...";
-                setTimeout(function(){ 
-                    $scope.calibrating1 = false;
-                    $scope.calibrateOk1 = true; 
-                    calibObj1.innerHTML = "1 ready";
-                    $scope.$apply(); 
-                }, 3000)
-            }
+
+        var keyMapLoc = '\\path\\to\\file.txt';
+        var chooser = document.getElementById("fileDialog");
+        chooser.addEventListener("click", function(evt) {
+            this.value = null;
+        });
+        //Event to select the path of the file to open
+        chooser.addEventListener("change", function(evt) {
+            // When we reach this point, it means the user has selected a file,
+            $scope.frequencyData1 = [];
+            $scope.currentFreq1 = [0,0];
+            $scope.ampliData1 = [];
+            $scope.frequencyData2 = [];
+            $scope.currentFreq2 = [0,0];
+            $scope.ampliData2 = [];
+            $scope.frequencyData3 = [];
+            $scope.currentFreq3 = [0,0];
+            $scope.ampliData3 = [];
+            //this.value contains the path to the selected file
+            var ffile = this.value || keyMapLoc;
+            //Read the data of the selected file
+            fs.readFile(ffile, "utf8", function read(err, data) {
+                if (err) {
+                    throw err;
+                }
+                var stringValue=[], wheel=0, indexValue=0;
+                for(var i=0; i<data.length;i++){
+                    if(data[i] == ",") {
+                        if(wheel == 0){
+                            $scope.ampliData1.push([indexValue, parseFloat(stringValue)]);
+                        }
+                        else if(wheel == 1){
+                            $scope.frequencyData1.push([indexValue, parseFloat(stringValue)]);
+                        }
+                        else if(wheel == 2){
+                            $scope.ampliData2.push([indexValue, parseFloat(stringValue)]);
+                        }
+                        else if(wheel == 3){
+                            $scope.frequencyData2.push([indexValue, parseFloat(stringValue)]);
+                        }
+                        else if(wheel == 4){
+                            $scope.ampliData3.push([indexValue, parseFloat(stringValue)]);
+                        }
+                        else{
+                            $scope.frequencyData3.push([indexValue, parseFloat(stringValue)]);
+                            indexValue++;
+                        }
+                        wheel++;
+                        if(wheel == 6) wheel=0;
+                        stringValue=[];
+                    }
+                    else stringValue = stringValue + data[i];
+                }
+                $scope.currentFreq1 = $scope.frequencyData1[$scope.frequencyData1.length - 1];
+                $scope.currentFreq2 = $scope.frequencyData2[$scope.frequencyData2.length - 1];
+                $scope.currentFreq3 = $scope.frequencyData3[$scope.frequencyData3.length - 1];
+                $scope.$apply();
+            });
+        }, false); 
+        // Trigger click event on the chooser, this will bring up the dialog
+        $scope.showTheFile = function() {
+            chooser.click()
         }
-        $scope.calibrate2 = function(){
-            if($scope.calibrateOk2 || $scope.calibrateError2) {
-                $scope.calibrating2 = false;
-                $scope.calibrateOk2 = false;
-                $scope.calibrateError2 = false;
-                calibObj2.innerHTML = "Calibrate 2";
-            }
-            else{
-                $scope.calibrating2 = true;
-                calibObj2.innerHTML = "Calibrating...";
-                setTimeout(function(){ 
-                    $scope.calibrating2 = false;
-                    $scope.calibrateError2 = true; 
-                    calibObj2.innerHTML = "Error";
-                    $scope.$apply();
-                }, 3000)
-            }
-        }
-        $scope.calibrate3 = function(){
-            if($scope.calibrateOk3 || $scope.calibrateError3) {
-                $scope.calibrating3 = false;
-                $scope.calibrateOk3 = false;
-                $scope.calibrateError3 = false;
-                calibObj3.innerHTML = "Calibrate 3";
-            }
-            else{
-                $scope.calibrating3 = true;
-                calibObj3.innerHTML = "Calibrating...";
-                setTimeout(function(){ 
-                    $scope.calibrating3 = false;
-                    $scope.calibrateOk3 = true; 
-                    calibObj3.innerHTML = "3 ready";
-                    $scope.$apply();
-                }, 3000)
-            }
-        }
+        //Init. values when measure is pressed
         $scope.measurePressed = function(value){
             if(value){
                 $scope.frequencyData1 = [];

@@ -8,7 +8,7 @@
     width: 35%;
     background-size: 100% 100%;
         legend{
-            @include fontUse($fontFamilly, 100%, $fontWeight);
+            @include fontUse($fontFamilly, 130%, $fontWeight);
             margin:auto
         }
         fieldset{
@@ -32,7 +32,7 @@
             border-collapse: collapse;
             color: white;
             width: 100%;
-            @include fontUse($fontFamilly, 100%, $fontWeight);
+            @include fontUse($fontFamilly, 130%, $fontWeight);
             margin: 2% 0px;
 
         }
@@ -71,7 +71,7 @@
         {
             border-collapse: collapse;
             color: white;
-            @include fontUse($fontFamilly, 100%, $fontWeight);
+            @include fontUse($fontFamilly, 130%, $fontWeight);
             margin-left: auto;
             margin-right: auto;
         }
@@ -91,7 +91,7 @@
             border-collapse: collapse;
             color: white;
             width: 100%;
-            @include fontUse($fontFamilly, 100%, $fontWeight);
+            @include fontUse($fontFamilly, 130%, $fontWeight);
             margin: 2% 0px;
         }
         td, th

@@ -10,7 +10,7 @@
             templateUrl: 'js/directives/panel/panel.html',
             controller: 'panelCtrl',
             controllerAs: 'vm',
-            scope:{measuring: '=', displaySignal1: '=', displaySignal2: '=', displaySignal3: '=', 
+            scope:{measuring: '=', save: '=', displaySignal1: '=', displaySignal2: '=', displaySignal3: '=', 
                     displayFreq1: '=', displayFreq2: '=', displayFreq3: '=',
                     displayAmpli1: '=', displayAmpli2: '=', displayAmpli3: '=',
                     calibrating1: '=', calibrating2: '=',calibrating3: '=', calibrateOk1: '=', calibrateOk2: '=', calibrateOk3: '=', 

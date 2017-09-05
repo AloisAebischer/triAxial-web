@@ -22,6 +22,7 @@ angular.module('triple-axis', []).controller('mainController', ['$scope', '$time
         freqScale: 5000,
         timeScale: 200,
         measuring: false,
+        save: false,
         calibFreq: 3.00,
         calibrating1: false,
         calibrating2: false,
@@ -96,7 +97,7 @@ angular.module('triple-axis', []).controller('mainController', ['$scope', '$time
         if (err) console.error('Error opening Arduino serial port'); 
         else console.log("Arduino serial port open");
     });
-    var refTimeGlobal=null, wheel=0, index = 0;
+    var  wheel=0, index = 0;
     function init() {
         arduinoPort.on('data', function (data) {
             if($scope.interfaceData.measuring){
@@ -145,33 +146,44 @@ angular.module('triple-axis', []).controller('mainController', ['$scope', '$time
         $scope.$watch('interfaceData.measuring', function (value) {
             if (value) {
                 index=0;
-                //arduinoPort.write("1");
-                //intervalData = setInterval(getFrequency, 500);
+                indexValue=0;
+                intervalData = setInterval(getFrequency, 1000);
             }
-            else{
-                //arduinoPort.write("0");
-                //clearInterval(intervalData);
-            } 
+            else clearInterval(intervalData);
+        });
+
+        $scope.$watch('interfaceData.save', function (value) {
+            if (value) {
+                 $scope.interfaceData.save = false;
+                    popupS.window({
+                        mode: 'alert',
+                        content: 'Hello World!'
+                });
+            }
         });
         //Connect to Yocto modules
         connectYocto();
-
     }
     //Code for random frequencies
+    var indexValue=0;
    function getFrequency(){
         var realTime = new Date().getTime();
         var meanFrequency1 = 3 + 0.01*Math.random() - 0.005;
-        var meanFrequency2 = 2.98 + 0.02*Math.random() - 0.01;
-        var meanFrequency3 = 3.01 + 0.02*Math.random() - 0.01;
-        var obj1 = [(realTime-refTimeGlobal)/1000, meanFrequency1];
-        var obj2 = [(realTime-refTimeGlobal)/1000, meanFrequency2];
-        var obj3 = [(realTime-refTimeGlobal)/1000, meanFrequency3];
+        var meanFrequency2 = 2.99 + 0.01*Math.random() - 0.01;
+        var meanFrequency3 = 3.01 + 0.01*Math.random() - 0.01;
+        var obj1 = [indexValue, meanFrequency1];
+        var obj2 = [indexValue, meanFrequency2];
+        var obj3 = [indexValue, meanFrequency3];
+        $scope.interfaceData.ampliData1.push([indexValue, 3]);
         $scope.interfaceData.frequencyData1.push(obj1);
         $scope.interfaceData.currentFreq1 = obj1;
+        $scope.interfaceData.ampliData2.push([indexValue, 6]);
         $scope.interfaceData.frequencyData2.push(obj2);
         $scope.interfaceData.currentFreq2 = obj2;
+        $scope.interfaceData.ampliData3.push([indexValue, 4]);
         $scope.interfaceData.frequencyData3.push(obj3);
         $scope.interfaceData.currentFreq3 = obj3;
+        indexValue++;
         $scope.$apply();
     }
     function computeRoll(object, value){
