@@ -20,7 +20,7 @@ angular.module('triple-axis', []).controller('mainController', ['$scope', '$time
         currentFreq3: [0,0],
         ampliData3: [],
         freqScale: 5000,
-        timeScale: 200,
+        timeScale: 120,
         measuring: false,
         save: false,
         calibFreq: 3.00,
@@ -150,16 +150,6 @@ angular.module('triple-axis', []).controller('mainController', ['$scope', '$time
                 intervalData = setInterval(getFrequency, 1000);
             }
             else clearInterval(intervalData);
-        });
-
-        $scope.$watch('interfaceData.save', function (value) {
-            if (value) {
-                 $scope.interfaceData.save = false;
-                    popupS.window({
-                        mode: 'alert',
-                        content: 'Hello World!'
-                });
-            }
         });
         //Connect to Yocto modules
         connectYocto();

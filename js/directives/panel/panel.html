@@ -1,6 +1,8 @@
 <!-- PANEL -->
 <div class="panel">
         <input style="display:none;" id="fileDialog" type="file"/>
+        <div class="messageOk" id="messageOk" style="position:absolute; top:14%; right:3%;">Data saved in ./dataBase</div>
+        <div class="messageError" id="messageError" style="position:absolute; top:14%; right:3%;">Enter file name</div>
         <form style="position:absolute; height: 100%; width: 100%; bottom:0; left:0;">
             <br>
             <fieldset>
@@ -18,7 +20,7 @@
                                 <div class="btn" ng-click="measuring=!measuring" ng-class="{red:measuring}">Measure</div>
                             </td>
                             <td>
-                                <div class="btn" ng-click="save=true">Save</div>
+                                <div class="btn" ng-click="saveData()">Save</div>
                             </td>
                         </tr>
                         <tr>
