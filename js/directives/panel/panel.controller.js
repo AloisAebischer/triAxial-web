@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('triple-axis')
+        .module('tri-axial')
         .controller('panelCtrl', panelCtrl);
 
     function panelCtrl($scope) {

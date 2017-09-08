@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('triple-axis')
+        .module('tri-axial')
         .directive('notification', notificationDirective);
 
     function notificationDirective() {

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('triple-axis')
+        .module('tri-axial')
         .controller('interfaceCtrl', ['$timeout', '$scope', interfaceCtrl]);
 
     function interfaceCtrl($timeout,$scope) {
