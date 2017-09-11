@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-angular.module('triple-axis', []).controller('mainController', ['$scope', '$timeout', '$interval', function ($scope, $timeout, $interval) {
+angular.module('tri-axial', []).controller('mainController', ['$scope', '$timeout', '$interval', function ($scope, $timeout, $interval) {
     var mainVm = this,
     yPwmInput1_frequency1 = null,
     yPwmInput1_frequency2 = null,
