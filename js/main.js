@@ -93,7 +93,7 @@ angular.module('tri-axial', []).controller('mainController', ['$scope', '$timeou
             })
     }
     //Connect to serial port for Arduino
-    var arduinoPort = new SerialPort('COM6', {baudRate: 9600, parser: SerialPort.parsers.readline("\n")} ,function (err) { 
+    var arduinoPort = new SerialPort('COM7', {baudRate: 500000, parser: SerialPort.parsers.readline("\n")} ,function (err) { 
         if (err) console.error('Error opening Arduino serial port'); 
         else console.log("Arduino serial port open");
     });
@@ -147,9 +147,9 @@ angular.module('tri-axial', []).controller('mainController', ['$scope', '$timeou
             if (value) {
                 index=0;
                 indexValue=0;
-                intervalData = setInterval(getFrequency, 1000);
+                //intervalData = setInterval(getFrequency, 1000);
             }
-            else clearInterval(intervalData);
+            //else clearInterval(intervalData);
         });
         //Connect to Yocto modules
         connectYocto();
