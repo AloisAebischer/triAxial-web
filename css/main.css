@@ -1,0 +1,261 @@
+.panel {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 35%;
+  height: 100%;
+  background-size: 100% 100%;
+}
+
+.panel legend {
+  font-family: 'Arial';
+  font-size: 180%;
+  font-weight: 100;
+  margin: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel fieldset {
+  font-family: 'Arial';
+  font-size: 58%;
+  font-weight: 100;
+  margin: 1%;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel input {
+  font-family: 'Arial';
+  font-size: 100%;
+  font-weight: 100;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.panel input[type='number'] {
+  text-align: right;
+}
+
+.panel .commands table {
+  font-family: 'Arial';
+  font-size: 130%;
+  font-weight: 100;
+  width: 100%;
+  margin: 2% 0;
+  border-collapse: collapse;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel .commands td,
+.panel .commands th {
+  padding: 1%;
+  text-align: center;
+}
+
+.panel .btn {
+  width: 70%;
+  margin: auto;
+  padding: 4% 6%;
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid white;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background-color: none;
+  background-size: 70%;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.panel .btn.green {
+  background-color: green;
+}
+
+.panel .btn.yellow {
+  background-color: gold;
+}
+
+.panel .btn.red {
+  background-color: red;
+}
+
+.panel .btn.blue {
+  background-color: DodgerBlue;
+}
+
+.panel .results table {
+  font-family: 'Arial';
+  font-size: 130%;
+  font-weight: 100;
+  margin-right: auto;
+  margin-left: auto;
+  border-collapse: collapse;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel .results tr {
+  font-family: 'Arial';
+  font-size: 90%;
+  font-weight: 100;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel .results td,
+.panel .results th {
+  padding: 1.5%;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.panel .graphics table {
+  font-family: 'Arial';
+  font-size: 130%;
+  font-weight: 100;
+  width: 100%;
+  margin: 2% 0;
+  border-collapse: collapse;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel .graphics td,
+.panel .graphics th {
+  padding: 1%;
+  text-align: center;
+}
+
+.panel .container {
+  position: relative;
+  width: 95%;
+  height: 19%;
+  perspective: 1000px;
+}
+
+.panel #cube {
+  position: absolute;
+  top: 21%;
+  left: 39%;
+  width: 20%;
+  height: 60%;
+  margin: 0;
+  transform-style: preserve-3d;
+}
+
+.panel #cube figure {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 2px solid white;
+}
+
+.panel #cube .one {
+  transform: rotateX(90deg) translateZ(43px);
+}
+
+.panel #cube .two {
+  transform: translateZ(43px);
+}
+
+.panel #cube .three {
+  transform: rotateY(-90deg) translateZ(43px);
+}
+
+.panel #cube .four {
+  transform: rotateY(180deg) translateZ(43px);
+}
+
+.panel #cube .five {
+  transform: rotateY(90deg) translateZ(43px);
+}
+
+.panel #cube .six {
+  transform: rotateX(-90deg) translateZ(43px) rotate(180deg);
+}
+
+.panel .wheel {
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0);
+  -moz-transform: translateX(-50%) translateY(-50%) translateZ(0);
+  -ms-transform: translateX(-50%) translateY(-50%) translateZ(0);
+  -o-transform: translateX(-50%) translateY(-50%) translateZ(0);
+  transform: translateX(-50%) translateY(-50%) translateZ(0);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.panel .wheel.red {
+  background-color: red;
+}
+
+.panel .wheel.green {
+  background-color: green;
+}
+
+.panel .wheel.blue {
+  background-color: DodgerBlue;
+}
+
+.panel .messageOk {
+  padding: 1px 6px;
+  transition: opacity .5s linear;
+  opacity: 0;
+  color: #4f8a10;
+  background-color: #dff2bf;
+}
+
+.panel .messageError {
+  padding: 1px 6px;
+  transition: opacity .5s linear;
+  opacity: 0;
+  color: #d8000c;
+  background-color: #ffbaba;
+}
+
+.graph {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 64%;
+  height: 100%;
+  background-size: 100% 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes alertOn {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
